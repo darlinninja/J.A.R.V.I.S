@@ -1,0 +1,131 @@
+/* 
+   JARVIS MARK IV - ESTÉTICA CINEMÁTICA
+   Corrección de flujo y alineación central absoluta
+*/
+
+:root {
+    --cyan: #00f2ff;
+    --blue: #008cff;
+    --dark: #00080a;
+    --glow: rgba(0, 242, 255, 0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: #000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    overflow: hidden;
+    /* Efecto de rejilla de fondo */
+    background-image: 
+        radial-gradient(circle at center, #001f22 0%, #000 85%),
+        linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* CONTENEDOR DEL HOLOGRAMA - OCUPA EL 30-40% DE LA PANTALLA */
+.hologram-suite {
+    position: relative;
+    width: 50vh; 
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Separa el orbe del botón */
+}
+
+/* ANILLOS DINÁMICOS */
+.ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    filter: drop-shadow(0 0 15px var(--cyan));
+}
+
+.ring-outer {
+    width: 100%; height: 100%;
+    border: 3px solid var(--cyan);
+    border-top-color: transparent;
+    opacity: 0.2;
+    animation: rotate 15s linear infinite;
+}
+
+.ring-mid {
+    width: 80%; height: 80%;
+    border: 2px dashed var(--cyan);
+    opacity: 0.4;
+    animation: rotate-reverse 10s linear infinite;
+}
+
+/* EL NÚCLEO (EL ORBE) */
+#jarvis-orb {
+    position: relative;
+    width: 180px; /* Tamaño impactante */
+    height: 180px;
+    background: radial-gradient(circle, #fff 0%, var(--cyan) 40%, #002e33 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 80px var(--cyan), 
+        inset 0 0 30px #fff;
+    z-index: 10;
+}
+
+/* PANEL DE INTERFAZ ABAJO (TEXTO Y BOTÓN) */
+.interface-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    z-index: 20;
+}
+
+.status-text {
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-shadow: 0 0 20px var(--cyan);
+    margin: 0;
+}
+
+#btn-escuchar {
+    background: rgba(0, 242, 255, 0.05);
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    padding: 15px 45px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    border-radius: 2px;
+}
+
+#btn-escuchar:hover {
+    background: var(--cyan);
+    color: #000;
+    box-shadow: 0 0 50px var(--cyan);
+    transform: scale(1.1);
+}
+
+/* ANIMACIONES */
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes rotate-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+
+/* EFECTO DE PULSO AL HABLAR */
+.speaking-glow {
+    animation: core-pulse 0.5s infinite alternate;
+}
+
+@keyframes core-pulse {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.15); filter: brightness(1.6); }
+}
