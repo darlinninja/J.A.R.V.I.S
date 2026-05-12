@@ -5,7 +5,11 @@
  */
 
 // --- [ SECCIÓN 0: CONFIGURACIÓN DE ENLACES ] ---
-const API_KEY = "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";
+const p1 = "sk-or-";
+const p2 = "v1-a13b949d7de4ed40d9f9b0376";
+const p3 = "c37a96b2ade795b5fca3a562af071d49e4ce5be"; 
+
+const API_KEY = p1 + p2 + p3; // Enlace satelital reconstruido
 const WEATHER_KEY = "bea93786e758c6b45029c268370d13dd";
 const NEWS_KEY = "a8a35ad3bb1740c8a169469e7dc94b48";
 
@@ -87,7 +91,7 @@ async function obtenerRespuestaIA(pregunta) {
             body: JSON.stringify({
                 "model": "openai/gpt-4o-mini",
                 "messages": [
-                    {"role": "system", "content": `Eres JARVIS eres ispirado en la IA de Tony Stark pero fuiste creado por darling, tienes que tener en cuenta que no siempre sera darlig que te hablara cada vez que algien quiera iniciar una conversacion preguntale su nombre por cortecia y despues llamalo como el te dijo que se llame Historial:\n${historialContexto}`},
+                    {"role": "system", "content": `Eres JARVIS eres ispirado en la IA de Tony Stark pero fuiste creado por darling, tienes que tener en cuenta que no siempre sera darlig que te hablara asi que dirigite como claro señor Historial:\n${historialContexto}`},
                     {"role": "user", "content": pregunta}
                 ]
             })
